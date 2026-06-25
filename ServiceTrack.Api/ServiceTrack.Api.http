@@ -1,0 +1,45 @@
+@host = http://localhost:5256
+
+### Get all service requests
+GET {{host}}/api/servicerequests
+Accept: application/json
+
+### Get service request by id
+GET {{host}}/api/servicerequests/1
+Accept: application/json
+
+### Create a service request
+POST {{host}}/api/servicerequests
+Content-Type: application/json
+
+{
+  "title": "New user needs Power BI access",
+  "description": "A finance department user needs access to the monthly sales dashboard.",
+  "category": "Reporting",
+  "priority": "Medium",
+  "status": "Open"
+}
+
+### Update service request
+PUT {{host}}/api/servicerequests/1
+Content-Type: application/json
+
+{
+  "title": "New user needs Power BI access",
+  "description": "A finance department user needs access to the monthly sales dashboard.",
+  "category": "Reporting",
+  "priority": "Medium",
+  "status": "InProgress"
+}
+
+### Update service request status
+PATCH {{host}}/api/servicerequests/1/status
+Content-Type: application/json
+
+{
+  "status": "Resolved"
+}
+
+### Get service request status history
+GET {{host}}/api/servicerequests/1/status-history
+Accept: application/json
